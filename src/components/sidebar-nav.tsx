@@ -51,10 +51,7 @@ export function SidebarNav() {
   return (
     <>
       <SidebarHeader>
-        <div className="flex items-center gap-2 p-2">
-          <Bot className="text-primary size-8" />
-          <span className="text-lg font-headline font-semibold">Workflow Wise</span>
-        </div>
+        
       </SidebarHeader>
       <Separator />
       <SidebarContent>

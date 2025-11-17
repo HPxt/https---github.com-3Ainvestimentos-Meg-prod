@@ -39,10 +39,7 @@ export default function LoginPage() {
     <div className="flex min-h-screen w-full items-center justify-center bg-muted/30 dark:bg-muted/10 p-4">
       <Card className="w-full max-w-md shadow-2xl">
         <CardHeader className="text-center">
-          <div className="flex justify-center items-center gap-2 mb-4">
-            <Bot size={32} className="text-primary" />
-            <h1 className="text-3xl font-headline font-bold">Workflow Wise</h1>
-          </div>
+          
           <CardTitle className="text-2xl font-headline">Bem-vindo de Volta</CardTitle>
           <CardDescription>
             Faça login para acessar seus workflows e solicitações.
