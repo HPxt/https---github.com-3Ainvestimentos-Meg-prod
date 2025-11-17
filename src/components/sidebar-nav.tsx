@@ -106,12 +106,6 @@ export function SidebarNav() {
       </SidebarContent>
       <Separator />
       <SidebarFooter>
-        <div className='p-2 space-y-2'>
-            <div className='p-2 rounded-lg bg-accent/50 text-center'>
-                <p className='text-xs font-semibold text-accent-foreground'>Versão do App</p>
-                <p className='text-xs text-muted-foreground'>1.0.0</p>
-            </div>
-        </div>
       </SidebarFooter>
     </>
   );
