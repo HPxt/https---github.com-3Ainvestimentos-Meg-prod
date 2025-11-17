@@ -61,14 +61,12 @@ export function SidebarNav() {
         <SidebarMenu>
           {menuItems.main.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Link href={item.href} legacyBehavior passHref>
-                <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label}>
-                  <a>
-                    <item.icon />
-                    <span>{item.label}</span>
-                  </a>
-                </SidebarMenuButton>
-              </Link>
+              <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label}>
+                <Link href={item.href}>
+                  <item.icon />
+                  <span>{item.label}</span>
+                </Link>
+              </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
@@ -79,14 +77,12 @@ export function SidebarNav() {
             <SidebarMenu>
               {menuItems.management.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                  <Link href={item.href} legacyBehavior passHref>
                     <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label}>
-                       <a>
+                       <Link href={item.href}>
                         <item.icon />
                         <span>{item.label}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
-                  </Link>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -99,14 +95,12 @@ export function SidebarNav() {
             <SidebarMenu>
               {menuItems.admin.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                  <Link href={item.href} legacyBehavior passHref>
                     <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label}>
-                       <a>
+                       <Link href={item.href}>
                         <item.icon />
                         <span>{item.label}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
-                  </Link>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
