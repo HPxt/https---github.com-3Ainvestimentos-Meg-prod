@@ -5,7 +5,7 @@ import { AuthProvider } from '@/lib/auth';
 
 export const metadata: Metadata = {
   title: 'Workflow Wise',
-  description: 'Streamline your business processes with dynamic, approval-based workflows.',
+  description: 'Otimize seus processos de negócios com workflows dinâmicos baseados em aprovação.',
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

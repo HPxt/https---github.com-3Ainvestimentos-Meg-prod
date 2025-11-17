@@ -20,8 +20,8 @@ export default function WorkflowsPage() {
     <AppShell breadcrumbs={breadcrumbs}>
       <div className="space-y-4">
         <div className="space-y-1">
-          <h1 className="text-3xl font-headline font-bold tracking-tight">Start a New Workflow</h1>
-          <p className="text-muted-foreground">Choose from the available templates to initiate a new request.</p>
+          <h1 className="text-3xl font-headline font-bold tracking-tight">Iniciar um Novo Workflow</h1>
+          <p className="text-muted-foreground">Escolha um dos modelos disponíveis para iniciar uma nova solicitação.</p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {mockWorkflowDefinitions.map((workflow) => (
@@ -46,7 +46,7 @@ export default function WorkflowsPage() {
               <CardFooter>
                 <Button asChild className="w-full">
                   <Link href={`/workflows/${workflow.id}`}>
-                    Start Request <ArrowRight className="ml-2 h-4 w-4" />
+                    Iniciar Solicitação <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </CardFooter>

@@ -32,11 +32,11 @@ export function RequestsTable({ requests, showSubmittedBy = false }: RequestsTab
       <TableHeader>
         <TableRow>
           <TableHead>Workflow</TableHead>
-          {showSubmittedBy && <TableHead>Submitted By</TableHead>}
-          <TableHead className="hidden md:table-cell">Submitted At</TableHead>
+          {showSubmittedBy && <TableHead>Enviado Por</TableHead>}
+          <TableHead className="hidden md:table-cell">Enviado Em</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>
-            <span className="sr-only">Actions</span>
+            <span className="sr-only">Ações</span>
           </TableHead>
         </TableRow>
       </TableHeader>
@@ -71,18 +71,18 @@ export function RequestsTable({ requests, showSubmittedBy = false }: RequestsTab
                 <DropdownMenuTrigger asChild>
                   <Button aria-haspopup="true" size="icon" variant="ghost">
                     <MoreHorizontal className="h-4 w-4" />
-                    <span className="sr-only">Toggle menu</span>
+                    <span className="sr-only">Alternar menu</span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                  <DropdownMenuLabel>Ações</DropdownMenuLabel>
                   <DropdownMenuItem asChild>
-                    <Link href={`/requests/${request.id}`}>View Details</Link>
+                    <Link href={`/requests/${request.id}`}>Ver Detalhes</Link>
                   </DropdownMenuItem>
                   {showSubmittedBy && (
                     <>
-                      <DropdownMenuItem>Approve</DropdownMenuItem>
-                      <DropdownMenuItem>Reject</DropdownMenuItem>
+                      <DropdownMenuItem>Aprovar</DropdownMenuItem>
+                      <DropdownMenuItem>Rejeitar</DropdownMenuItem>
                     </>
                   )}
                 </DropdownMenuContent>

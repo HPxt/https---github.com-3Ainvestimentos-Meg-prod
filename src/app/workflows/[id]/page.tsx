@@ -23,10 +23,10 @@ export default function SingleWorkflowPage() {
 
   if (!workflow) {
     return (
-      <AppShell breadcrumbs={[{ label: 'Workflows', href: '/workflows' }, { label: 'Not Found', href: '#' }]}>
+      <AppShell breadcrumbs={[{ label: 'Workflows', href: '/workflows' }, { label: 'Não Encontrado', href: '#' }]}>
         <div className="text-center">
-            <h1 className="text-2xl font-bold">Workflow not found</h1>
-            <p className="text-muted-foreground">The requested workflow could not be found.</p>
+            <h1 className="text-2xl font-bold">Workflow não encontrado</h1>
+            <p className="text-muted-foreground">O workflow solicitado não pôde ser encontrado.</p>
         </div>
       </AppShell>
     );
@@ -39,14 +39,14 @@ export default function SingleWorkflowPage() {
 
   const handleSubmit = (data: any) => {
     setIsLoading(true);
-    console.log('Form submitted:', data);
+    console.log('Formulário enviado:', data);
     
     // Simulate API call
     setTimeout(() => {
         setIsLoading(false);
         toast({
-            title: "Request Submitted!",
-            description: `Your "${workflow.name}" request has been submitted for approval.`,
+            title: "Solicitação Enviada!",
+            description: `Sua solicitação de "${workflow.name}" foi enviada para aprovação.`,
         });
         router.push('/requests');
     }, 1500);
@@ -55,21 +55,21 @@ export default function SingleWorkflowPage() {
   const ApprovalFlow = ({ steps }: { steps: ApprovalStep[] }) => (
     <Alert>
       <Terminal className="h-4 w-4" />
-      <AlertTitle>Approval Flow</AlertTitle>
+      <AlertTitle>Fluxo de Aprovação</AlertTitle>
       <AlertDescription>
         <ol className="relative mt-2 border-l border-gray-200 dark:border-gray-700">                  
           {steps.map((step, index) => (
             <li key={step.step} className="mb-4 ml-4">
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                <time className="mb-1 text-sm font-normal leading-none text-muted-foreground">Step {step.step}</time>
+                <time className="mb-1 text-sm font-normal leading-none text-muted-foreground">Etapa {step.step}</time>
                 <h3 className="text-md font-semibold text-foreground">{step.name}</h3>
-                <p className="text-sm font-normal text-muted-foreground">Requires approval from a user with the '{step.approverRole}' role.</p>
+                <p className="text-sm font-normal text-muted-foreground">Requer aprovação de um usuário com o papel '{step.approverRole}'.</p>
             </li>
           ))}
             <li className="ml-4">
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                <time className="mb-1 text-sm font-normal leading-none text-muted-foreground">Final Step</time>
-                <h3 className="text-md font-semibold text-foreground">Completed</h3>
+                <time className="mb-1 text-sm font-normal leading-none text-muted-foreground">Etapa Final</time>
+                <h3 className="text-md font-semibold text-foreground">Concluído</h3>
             </li>
         </ol>
       </AlertDescription>

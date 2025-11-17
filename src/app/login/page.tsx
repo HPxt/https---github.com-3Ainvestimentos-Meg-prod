@@ -43,9 +43,9 @@ export default function LoginPage() {
             <Bot size={32} className="text-primary" />
             <h1 className="text-3xl font-headline font-bold">Workflow Wise</h1>
           </div>
-          <CardTitle className="text-2xl font-headline">Welcome Back</CardTitle>
+          <CardTitle className="text-2xl font-headline">Bem-vindo de Volta</CardTitle>
           <CardDescription>
-            Sign in to access your workflows and requests.
+            Faça login para acessar seus workflows e solicitações.
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
@@ -54,31 +54,31 @@ export default function LoginPage() {
             <Input id="email" type="email" placeholder="m@example.com" required defaultValue="admin@workflowwise.com" />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Senha</Label>
             <Input id="password" type="password" required defaultValue="********"/>
           </div>
           <div className="grid gap-2">
-            <Label>Sign in as</Label>
+            <Label>Entrar como</Label>
             <Select onValueChange={(role) => handleLogin(role as UserRole)} defaultValue="Administrator">
               <SelectTrigger>
-                <SelectValue placeholder="Select a role to sign in" />
+                <SelectValue placeholder="Selecione um papel para entrar" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Administrator">Administrator</SelectItem>
-                <SelectItem value="Manager">Manager</SelectItem>
-                <SelectItem value="Collaborator">Collaborator</SelectItem>
+                <SelectItem value="Administrator">Administrador</SelectItem>
+                <SelectItem value="Manager">Gerente</SelectItem>
+                <SelectItem value="Collaborator">Colaborador</SelectItem>
               </SelectContent>
             </Select>
              <CardDescription className="text-xs pt-1">
-              For demonstration, select a role to simulate login.
+              Para demonstração, selecione um papel para simular o login.
             </CardDescription>
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
-          <Button className="w-full font-bold" onClick={() => handleLogin('Administrator')}>Sign In</Button>
+          <Button className="w-full font-bold" onClick={() => handleLogin('Administrator')}>Entrar</Button>
           <div className="text-center text-sm">
             <Link href="#" className="underline text-muted-foreground hover:text-primary">
-              Forgot your password?
+              Esqueceu sua senha?
             </Link>
           </div>
         </CardFooter>

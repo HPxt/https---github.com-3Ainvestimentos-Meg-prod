@@ -10,24 +10,24 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { mockRequests } from '@/lib/data';
 
-const breadcrumbs = [{ label: 'Manage', href: '/manage/requests' }, { label: 'Requests', href: '/manage/requests' }];
+const breadcrumbs = [{ label: 'Gerenciar', href: '/manage/requests' }, { label: 'Solicitações', href: '/manage/requests' }];
 
 export default function ManageRequestsPage() {
-  const pendingRequests = mockRequests.filter(req => req.status === 'Pending' || req.status === 'In Progress');
-  const resolvedRequests = mockRequests.filter(req => req.status === 'Approved' || req.status === 'Rejected');
+  const pendingRequests = mockRequests.filter(req => req.status === 'Pendente' || req.status === 'Em Progresso');
+  const resolvedRequests = mockRequests.filter(req => req.status === 'Aprovado' || req.status === 'Rejeitado');
 
   return (
     <AppShell breadcrumbs={breadcrumbs}>
       <div className="space-y-4">
         <div className="space-y-1">
-          <h1 className="text-3xl font-headline font-bold tracking-tight">Manage Requests</h1>
-          <p className="text-muted-foreground">Review, approve, or reject workflow requests submitted by your team.</p>
+          <h1 className="text-3xl font-headline font-bold tracking-tight">Gerenciar Solicitações</h1>
+          <p className="text-muted-foreground">Revise, aprove ou rejeite solicitações de workflow enviadas por sua equipe.</p>
         </div>
         <Tabs defaultValue="pending">
           <TabsList>
-            <TabsTrigger value="pending">Pending Action</TabsTrigger>
-            <TabsTrigger value="all">All Requests</TabsTrigger>
-            <TabsTrigger value="resolved">Resolved</TabsTrigger>
+            <TabsTrigger value="pending">Ação Pendente</TabsTrigger>
+            <TabsTrigger value="all">Todas as Solicitações</TabsTrigger>
+            <TabsTrigger value="resolved">Resolvidas</TabsTrigger>
           </TabsList>
           <Card>
             <TabsContent value="pending" className="m-0">

@@ -10,26 +10,26 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { mockRequests, mockUsers } from '@/lib/data';
 
-const breadcrumbs = [{ label: 'My Requests', href: '/requests' }];
+const breadcrumbs = [{ label: 'Minhas Solicitações', href: '/requests' }];
 
 export default function MyRequestsPage() {
   // In a real app, you would fetch requests for the logged-in user.
   const myRequests = mockRequests.filter(req => req.submittedBy.id === mockUsers['user-1'].id || req.submittedBy.id === mockUsers['user-3'].id);
-  const pendingRequests = myRequests.filter(req => req.status === 'Pending' || req.status === 'In Progress' || req.status === 'Needs Information');
-  const completedRequests = myRequests.filter(req => req.status === 'Approved' || req.status === 'Rejected');
+  const pendingRequests = myRequests.filter(req => req.status === 'Pendente' || req.status === 'Em Progresso' || req.status === 'Necessita Informação');
+  const completedRequests = myRequests.filter(req => req.status === 'Aprovado' || req.status === 'Rejeitado');
 
   return (
     <AppShell breadcrumbs={breadcrumbs}>
       <div className="space-y-4">
          <div className="space-y-1">
-          <h1 className="text-3xl font-headline font-bold tracking-tight">My Requests</h1>
-          <p className="text-muted-foreground">Track the status and history of all your submitted workflows.</p>
+          <h1 className="text-3xl font-headline font-bold tracking-tight">Minhas Solicitações</h1>
+          <p className="text-muted-foreground">Acompanhe o status e o histórico de todos os seus workflows enviados.</p>
         </div>
         <Tabs defaultValue="all">
             <TabsList>
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="pending">Pending</TabsTrigger>
-              <TabsTrigger value="completed">Completed</TabsTrigger>
+              <TabsTrigger value="all">Todas</TabsTrigger>
+              <TabsTrigger value="pending">Pendentes</TabsTrigger>
+              <TabsTrigger value="completed">Concluídas</TabsTrigger>
             </TabsList>
           <Card>
             <TabsContent value="all" className="m-0">

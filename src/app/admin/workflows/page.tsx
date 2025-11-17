@@ -37,15 +37,15 @@ export default function AdminWorkflowsPage() {
         <div className="flex items-center justify-between">
           <div className="space-y-1">
             <h1 className="text-3xl font-headline font-bold tracking-tight">
-              Workflow Definitions
+              Definições de Workflow
             </h1>
             <p className="text-muted-foreground">
-              Create and manage the workflow templates for your organization.
+              Crie e gerencie os modelos de workflow para sua organização.
             </p>
           </div>
           <Button>
             <PlusCircle className="mr-2 h-4 w-4" />
-            New Workflow
+            Novo Workflow
           </Button>
         </div>
         <Card>
@@ -53,11 +53,11 @@ export default function AdminWorkflowsPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Fields</TableHead>
-                  <TableHead>Approval Steps</TableHead>
+                  <TableHead>Nome</TableHead>
+                  <TableHead>Campos</TableHead>
+                  <TableHead>Etapas de Aprovação</TableHead>
                   <TableHead>
-                    <span className="sr-only">Actions</span>
+                    <span className="sr-only">Ações</span>
                   </TableHead>
                 </TableRow>
               </TableHeader>
@@ -72,14 +72,14 @@ export default function AdminWorkflowsPage() {
                         <DropdownMenuTrigger asChild>
                           <Button aria-haspopup="true" size="icon" variant="ghost">
                             <MoreHorizontal className="h-4 w-4" />
-                            <span className="sr-only">Toggle menu</span>
+                            <span className="sr-only">Alternar menu</span>
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                          <DropdownMenuItem>Edit</DropdownMenuItem>
-                          <DropdownMenuItem>Duplicate</DropdownMenuItem>
-                          <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                          <DropdownMenuLabel>Ações</DropdownMenuLabel>
+                          <DropdownMenuItem>Editar</DropdownMenuItem>
+                          <DropdownMenuItem>Duplicar</DropdownMenuItem>
+                          <DropdownMenuItem className="text-destructive">Excluir</DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </TableCell>

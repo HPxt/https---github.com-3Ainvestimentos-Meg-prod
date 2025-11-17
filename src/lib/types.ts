@@ -33,7 +33,7 @@ export type WorkflowDefinition = {
   approvalSteps: ApprovalStep[];
 };
 
-export type WorkflowRequestStatus = 'Pending' | 'In Progress' | 'Approved' | 'Rejected' | 'Needs Information';
+export type WorkflowRequestStatus = 'Pendente' | 'Em Progresso' | 'Aprovado' | 'Rejeitado' | 'Necessita Informação';
 
 export type WorkflowRequest = {
   id: string;

@@ -25,7 +25,7 @@ export function AppShell({ children, breadcrumbs }: AppShellProps) {
   if (!user) {
     return (
         <div className="flex h-screen w-full items-center justify-center">
-            <div className="animate-pulse">Loading...</div>
+            <div className="animate-pulse">Carregando...</div>
         </div>
     );
   }

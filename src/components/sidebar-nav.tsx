@@ -27,14 +27,14 @@ import { Badge } from './ui/badge';
 
 const menuItems = {
   main: [
-    { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { href: '/workflows', label: 'Start a Workflow', icon: GitFork },
-    { href: '/requests', label: 'My Requests', icon: FileText },
+    { href: '/dashboard', label: 'Painel', icon: LayoutDashboard },
+    { href: '/workflows', label: 'Iniciar um Workflow', icon: GitFork },
+    { href: '/requests', label: 'Minhas Solicitações', icon: FileText },
   ],
-  management: [{ href: '/manage/requests', label: 'Manage Requests', icon: FolderKanban }],
+  management: [{ href: '/manage/requests', label: 'Gerenciar Solicitações', icon: FolderKanban }],
   admin: [
-    { href: '/admin/workflows', label: 'Workflow Definitions', icon: Settings },
-    { href: '/admin/users', label: 'User Management', icon: Users },
+    { href: '/admin/workflows', label: 'Definições de Workflow', icon: Settings },
+    { href: '/admin/users', label: 'Gerenciar Usuários', icon: Users },
   ],
 };
 
@@ -73,7 +73,7 @@ export function SidebarNav() {
 
         {(user.role === 'Manager' || user.role === 'Administrator') && (
           <SidebarGroup>
-            <SidebarGroupLabel>Management</SidebarGroupLabel>
+            <SidebarGroupLabel>Gerenciamento</SidebarGroupLabel>
             <SidebarMenu>
               {menuItems.management.map((item) => (
                 <SidebarMenuItem key={item.href}>
@@ -91,7 +91,7 @@ export function SidebarNav() {
 
         {user.role === 'Administrator' && (
           <SidebarGroup>
-            <SidebarGroupLabel>Administration</SidebarGroupLabel>
+            <SidebarGroupLabel>Administração</SidebarGroupLabel>
             <SidebarMenu>
               {menuItems.admin.map((item) => (
                 <SidebarMenuItem key={item.href}>
@@ -111,7 +111,7 @@ export function SidebarNav() {
       <SidebarFooter>
         <div className='p-2 space-y-2'>
             <div className='p-2 rounded-lg bg-accent/50 text-center'>
-                <p className='text-xs font-semibold text-accent-foreground'>App Version</p>
+                <p className='text-xs font-semibold text-accent-foreground'>Versão do App</p>
                 <p className='text-xs text-muted-foreground'>1.0.0</p>
             </div>
         </div>

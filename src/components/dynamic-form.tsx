@@ -39,7 +39,7 @@ export function DynamicForm({ formFields, onSubmit, isLoading }: DynamicFormProp
         validator = z.any();
       }
       if (field.required) {
-        validator = validator.min(1, { message: `${field.label} is required.` });
+        validator = validator.min(1, { message: `${field.label} é obrigatório.` });
       } else {
         validator = validator.optional();
       }
@@ -67,7 +67,7 @@ export function DynamicForm({ formFields, onSubmit, isLoading }: DynamicFormProp
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
               <SelectTrigger>
-                <SelectValue placeholder={formField.placeholder || "Select an option"} />
+                <SelectValue placeholder={formField.placeholder || "Selecione uma opção"} />
               </SelectTrigger>
             </FormControl>
             <SelectContent>
@@ -94,7 +94,7 @@ export function DynamicForm({ formFields, onSubmit, isLoading }: DynamicFormProp
                     {field.value ? (
                         format(field.value, "PPP")
                     ) : (
-                        <span>Pick a date</span>
+                        <span>Escolha uma data</span>
                     )}
                     <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                     </Button>
@@ -136,7 +136,7 @@ export function DynamicForm({ formFields, onSubmit, isLoading }: DynamicFormProp
                       format(field.value.from, "LLL dd, y")
                     )
                   ) : (
-                    <span>Pick a date range</span>
+                    <span>Escolha um intervalo de datas</span>
                   )}
                 </Button>
               </PopoverTrigger>
@@ -179,7 +179,7 @@ export function DynamicForm({ formFields, onSubmit, isLoading }: DynamicFormProp
           ))}
         </div>
         <Button type="submit" disabled={isLoading} className="w-full sm:w-auto">
-          {isLoading ? 'Submitting...' : 'Submit Request'}
+          {isLoading ? 'Enviando...' : 'Enviar Solicitação'}
         </Button>
       </form>
     </Form>
