@@ -4,14 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Search, Bell, LifeBuoy, LogOut, Settings, User as UserIcon } from 'lucide-react';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
 import { Input } from '@/components/ui/input';
 import {
   DropdownMenu,
@@ -44,29 +36,6 @@ export function Header({ breadcrumbs }: HeaderProps) {
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 backdrop-blur-sm px-4 md:px-6">
       <div className="flex items-center gap-2">
         <SidebarTrigger className="md:hidden" />
-        <Breadcrumb className="hidden md:flex">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/dashboard">Início</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            {breadcrumbs.map((crumb, index) => (
-              <React.Fragment key={crumb.href}>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  {index === breadcrumbs.length - 1 ? (
-                    <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
-                  ) : (
-                    <BreadcrumbLink asChild>
-                      <Link href={crumb.href}>{crumb.label}</Link>
-                    </BreadcrumbLink>
-                  )}
-                </BreadcrumbItem>
-              </React.Fragment>
-            ))}
-          </BreadcrumbList>
-        </Breadcrumb>
       </div>
 
       <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
