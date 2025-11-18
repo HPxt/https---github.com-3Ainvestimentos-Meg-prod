@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { SidebarProvider, Sidebar, SidebarInset, SidebarRail } from '@/components/ui/sidebar';
 import { SidebarNav } from '@/components/sidebar-nav';
@@ -9,10 +9,9 @@ import { useAuth } from '@/lib/auth';
 
 type AppShellProps = {
   children: React.ReactNode;
-  breadcrumbs: { label: string; href: string }[];
 };
 
-export function AppShell({ children, breadcrumbs }: AppShellProps) {
+export function AppShell({ children }: AppShellProps) {
   const { user } = useAuth();
   const router = useRouter();
 
@@ -36,8 +35,8 @@ export function AppShell({ children, breadcrumbs }: AppShellProps) {
         <SidebarNav />
       </Sidebar>
       <SidebarRail />
-      <SidebarInset className="bg-muted/30 dark:bg-muted/10">
-        <Header breadcrumbs={breadcrumbs} />
+      <SidebarInset className="bg-white dark:bg-muted/10">
+        <Header />
         <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-auto">
             {children}
         </main>
