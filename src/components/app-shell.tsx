@@ -34,7 +34,7 @@ export function AppShell({ children }: AppShellProps) {
         <SidebarNav />
       </Sidebar>
       <SidebarRail />
-      <SidebarInset className="bg-background">
+      <SidebarInset>
         <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-auto">
             {children}
         </main>

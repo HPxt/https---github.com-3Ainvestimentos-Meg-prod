@@ -1,6 +1,16 @@
 import Link from 'next/link';
-import { ArrowUpRight, CheckCircle, Clock, FileText, XCircle } from 'lucide-react';
-import { AppShell } from '@/components/app-shell';
+import {
+  ArrowUpRight,
+  CheckCircle,
+  Clock,
+  FileText,
+  XCircle,
+  Building,
+  Users,
+  Briefcase,
+  Megaphone,
+} from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -11,74 +21,123 @@ import {
 } from '@/components/ui/card';
 import { mockRequests } from '@/lib/data';
 import { RequestsTable } from '@/components/requests/requests-table';
+import { AppShell } from '@/components/app-shell';
 
-const breadcrumbs = [{ label: 'Painel', href: '/dashboard' }];
+const departments = [
+  {
+    name: 'Financeiro',
+    pending: 5,
+    icon: Building,
+  },
+  {
+    name: 'RH',
+    pending: 3,
+    icon: Users,
+  },
+  {
+    name: 'TI',
+    pending: 2,
+    icon: Briefcase,
+  },
+  {
+    name: 'Marketing',
+    pending: 2,
+    icon: Megaphone,
+  },
+];
 
 export default function DashboardPage() {
   const recentRequests = mockRequests.slice(0, 5);
 
   return (
-    <AppShell breadcrumbs={breadcrumbs}>
-      <div className="flex-1 space-y-4">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Solicitações Pendentes</CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">12</div>
-              <p className="text-xs text-muted-foreground">+2 da última semana</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Solicitações Aprovadas</CardTitle>
-              <CheckCircle className="h-4 w-4 text-green-500" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">34</div>
-              <p className="text-xs text-muted-foreground">+18.7% do último mês</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Solicitações Rejeitadas</CardTitle>
-              <XCircle className="h-4 w-4 text-red-500" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">5</div>
-              <p className="text-xs text-muted-foreground">-1 desde ontem</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total de Solicitações</CardTitle>
-              <FileText className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">152</div>
-              <p className="text-xs text-muted-foreground">+20.1% do último mês</p>
-            </CardContent>
-          </Card>
+    <AppShell>
+      <div className="flex-1 space-y-8">
+        {/* Seção Superior: Cards por Área */}
+        <div>
+          <h2 className="text-2xl font-headline font-bold tracking-tight mb-4">
+            Solicitações por Departamento
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {departments.map((dept) => (
+              <Card key={dept.name}>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">{dept.name}</CardTitle>
+                  <dept.icon className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">{dept.pending}</div>
+                  <p className="text-xs text-muted-foreground">solicitações pendentes</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
+
+        {/* Seção Inferior: Resumo e Solicitações Recentes */}
         <Card>
-          <CardHeader className="flex flex-row items-center">
-            <div className="grid gap-2">
-              <CardTitle>Solicitações Recentes</CardTitle>
-              <CardDescription>
-                Uma visão geral das suas submissões de workflow mais recentes.
-              </CardDescription>
+          <CardHeader>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+               <div className="grid gap-2">
+                <CardTitle>Visão Geral das Solicitações</CardTitle>
+                <CardDescription>
+                  Um resumo das suas submissões de workflow.
+                </CardDescription>
+              </div>
+               <Button asChild size="sm" className="ml-auto gap-1 w-full sm:w-auto">
+                <Link href="/requests">
+                  Ver Todas
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </Button>
             </div>
-            <Button asChild size="sm" className="ml-auto gap-1">
-              <Link href="/requests">
-                Ver Todas
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </Button>
           </CardHeader>
-          <CardContent>
-            <RequestsTable requests={recentRequests} />
+          <CardContent className="space-y-6">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <Card className="bg-muted/30">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Pendentes</CardTitle>
+                  <Clock className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">12</div>
+                  <p className="text-xs text-muted-foreground">+2 da última semana</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-muted/30">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Aprovadas</CardTitle>
+                  <CheckCircle className="h-4 w-4 text-green-500" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">34</div>
+                  <p className="text-xs text-muted-foreground">+18.7% do último mês</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-muted/30">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Rejeitadas</CardTitle>
+                  <XCircle className="h-4 w-4 text-red-500" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">5</div>
+                  <p className="text-xs text-muted-foreground">-1 desde ontem</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-muted/30">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Total</CardTitle>
+                  <FileText className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">152</div>
+                  <p className="text-xs text-muted-foreground">+20.1% do último mês</p>
+                </CardContent>
+              </Card>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Solicitações Recentes</h3>
+              <RequestsTable requests={recentRequests} />
+            </div>
           </CardContent>
         </Card>
       </div>
