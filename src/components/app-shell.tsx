@@ -29,7 +29,7 @@ export function AppShell({ children }: AppShellProps) {
   }
 
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <Sidebar side="left" variant="sidebar" collapsible="icon">
         <SidebarNav />
       </Sidebar>
