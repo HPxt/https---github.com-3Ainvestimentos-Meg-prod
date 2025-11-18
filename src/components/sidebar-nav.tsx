@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -24,6 +25,16 @@ import {
 import { useAuth } from '@/lib/auth';
 import { Button } from './ui/button';
 import { useRouter } from 'next/navigation';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+
 
 const menuItems = {
   main: [
@@ -31,10 +42,8 @@ const menuItems = {
     { href: '/workflows', label: 'Iniciar um Workflow', icon: GitFork },
     { href: '/requests', label: 'Minhas Solicitações', icon: FileText },
   ],
-  management: [{ href: '/manage/requests', label: 'Gerenciar Solicitações', icon: FolderKanban }],
   admin: [
-    { href: '/admin/workflows', label: 'Definições de Workflow', icon: Settings },
-    { href: '/admin/users', label: 'Gerenciar Usuários', icon: Users },
+    { href: '/settings', label: 'Configurações', icon: Settings },
   ],
 };
 
@@ -56,7 +65,7 @@ export function SidebarNav() {
 
   return (
     <>
-      <SidebarHeader></SidebarHeader>
+      <SidebarHeader />
       <SidebarContent>
         <SidebarMenu>
           {menuItems.main.map((item) => (
@@ -70,24 +79,6 @@ export function SidebarNav() {
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
-
-        {(user.role === 'Manager' || user.role === 'Administrator') && (
-          <SidebarGroup>
-            <SidebarGroupLabel>Gerenciamento</SidebarGroupLabel>
-            <SidebarMenu>
-              {menuItems.management.map((item) => (
-                <SidebarMenuItem key={item.href}>
-                  <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label}>
-                    <Link href={item.href}>
-                      <item.icon />
-                      <span>{item.label}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroup>
-        )}
 
         {user.role === 'Administrator' && (
           <SidebarGroup>
@@ -109,22 +100,23 @@ export function SidebarNav() {
       </SidebarContent>
 
       <SidebarFooter>
-        <SidebarMenu>
-           <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip="Configurações">
-                <Link href="#">
-                  <Settings />
-                  <span>Configurações</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton onClick={handleLogout} tooltip="Sair">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="w-full justify-start gap-2 p-2 h-auto"
+            >
               <LogOut />
               <span>Sair</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuItem onClick={handleLogout}>
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Sair</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </SidebarFooter>
     </>
   );
