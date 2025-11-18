@@ -54,9 +54,10 @@ export default function DashboardPage() {
       <div className="flex-1 space-y-8">
         {/* Seção Superior: Cards por Área */}
         <div>
-          <h2 className="text-2xl font-headline font-bold tracking-tight mb-4">
-            Solicitações por Departamento
-          </h2>
+           <div className="space-y-1 mb-4">
+            <h2 className="text-2xl font-headline font-bold tracking-tight">Solicitações</h2>
+            <p className="text-muted-foreground">Inicie processos e acesse as ferramentas da empresa.</p>
+          </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {departments.map((dept) => (
               <Card key={dept.name}>
