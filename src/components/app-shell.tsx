@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { SidebarProvider, Sidebar, SidebarInset, SidebarRail } from '@/components/ui/sidebar';
 import { SidebarNav } from '@/components/sidebar-nav';
-import { Header } from '@/components/header';
 import { useAuth } from '@/lib/auth';
 
 type AppShellProps = {
@@ -35,8 +34,7 @@ export function AppShell({ children }: AppShellProps) {
         <SidebarNav />
       </Sidebar>
       <SidebarRail />
-      <SidebarInset className="bg-white dark:bg-muted/10">
-        <Header />
+      <SidebarInset className="bg-background">
         <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-auto">
             {children}
         </main>
