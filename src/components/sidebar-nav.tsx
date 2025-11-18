@@ -53,7 +53,6 @@ export function SidebarNav() {
       <SidebarHeader>
         
       </SidebarHeader>
-      <Separator />
       <SidebarContent>
         <SidebarMenu>
           {menuItems.main.map((item) => (
