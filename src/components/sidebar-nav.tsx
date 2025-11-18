@@ -10,6 +10,9 @@ import {
   Users,
   Settings,
   FolderKanban,
+  LifeBuoy,
+  LogOut,
+  User,
 } from 'lucide-react';
 import {
   SidebarContent,
@@ -24,6 +27,18 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { useAuth } from '@/lib/auth';
 import { Badge } from './ui/badge';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Button } from './ui/button';
+import { useRouter } from 'next/navigation';
 
 const menuItems = {
   main: [
@@ -40,19 +55,23 @@ const menuItems = {
 
 export function SidebarNav() {
   const pathname = usePathname();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push('/login');
+  };
 
   const isActive = (href: string) => {
     return pathname === href || (href !== '/dashboard' && pathname.startsWith(href));
   };
-  
+
   if (!user) return null;
 
   return (
     <>
-      <SidebarHeader>
-        
-      </SidebarHeader>
+      <SidebarHeader></SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
           {menuItems.main.map((item) => (
@@ -73,12 +92,12 @@ export function SidebarNav() {
             <SidebarMenu>
               {menuItems.management.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                    <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label}>
-                       <Link href={item.href}>
-                        <item.icon />
-                        <span>{item.label}</span>
-                      </Link>
-                    </SidebarMenuButton>
+                  <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label}>
+                    <Link href={item.href}>
+                      <item.icon />
+                      <span>{item.label}</span>
+                    </Link>
+                  </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -91,20 +110,63 @@ export function SidebarNav() {
             <SidebarMenu>
               {menuItems.admin.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                    <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label}>
-                       <Link href={item.href}>
-                        <item.icon />
-                        <span>{item.label}</span>
-                      </Link>
-                    </SidebarMenuButton>
+                  <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label}>
+                    <Link href={item.href}>
+                      <item.icon />
+                      <span>{item.label}</span>
+                    </Link>
+                  </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
           </SidebarGroup>
         )}
       </SidebarContent>
-      <Separator />
+
       <SidebarFooter>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="w-full justify-start gap-2 p-2 h-auto">
+              <Avatar className="h-9 w-9">
+                <AvatarImage src={user?.avatarUrl} alt={user?.name} />
+                <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <div className="flex flex-col items-start text-left">
+                <p className="text-sm font-medium leading-none">{user?.name}</p>
+                <p className="text-xs leading-none text-muted-foreground">{user?.email}</p>
+              </div>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56 mb-2" align="end" forceMount>
+            <DropdownMenuLabel className="font-normal">
+              <div className="flex flex-col space-y-1">
+                <p className="text-sm font-medium leading-none">{user?.name}</p>
+                <p className="text-xs leading-none text-muted-foreground">{user?.email}</p>
+              </div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" />
+                <span>Perfil</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Configurações</span>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <LifeBuoy className="mr-2 h-4 w-4" />
+              <span>Suporte</span>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={handleLogout}>
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Sair</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </SidebarFooter>
     </>
   );
