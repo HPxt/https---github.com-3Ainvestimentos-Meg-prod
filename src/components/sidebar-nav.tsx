@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import {
   SidebarContent,
-  SidebarHeader,
   SidebarFooter,
   SidebarMenu,
   SidebarMenuItem,
@@ -39,8 +38,6 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 const menuItems = {
   main: [
     { href: '/dashboard', label: 'Painel', icon: LayoutDashboard },
-    { href: '/workflows', label: 'Iniciar um Workflow', icon: GitFork },
-    { href: '/requests', label: 'Minhas Solicitações', icon: FileText },
   ],
   admin: [
     { href: '/settings', label: 'Configurações', icon: Settings },
@@ -65,7 +62,6 @@ export function SidebarNav() {
 
   return (
     <>
-      <SidebarHeader />
       <SidebarContent>
         <SidebarMenu>
           {menuItems.main.map((item) => (
@@ -106,11 +102,22 @@ export function SidebarNav() {
               variant="ghost"
               className="w-full justify-start gap-2 p-2 h-auto"
             >
-              <LogOut />
-              <span>Sair</span>
+              <Avatar className="h-8 w-8">
+                <AvatarImage src={user?.avatarUrl} alt={user?.name} />
+                <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <div className="flex flex-col items-start">
+                <span className="text-sm font-medium">{user?.name}</span>
+                <span className="text-xs text-muted-foreground">{user?.email}</span>
+              </div>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuItem onClick={() => router.push('/settings')}>
+              <Settings className="mr-2 h-4 w-4" />
+              <span>Configurações</span>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>
               <LogOut className="mr-2 h-4 w-4" />
               <span>Sair</span>

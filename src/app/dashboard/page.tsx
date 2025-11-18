@@ -84,12 +84,6 @@ export default function DashboardPage() {
                   Um resumo das suas submissões de workflow.
                 </CardDescription>
               </div>
-               <Button asChild size="sm" className="ml-auto gap-1 w-full sm:w-auto">
-                <Link href="/requests">
-                  Ver Todas
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </Button>
             </div>
           </CardHeader>
           <CardContent className="space-y-6">
