@@ -13,7 +13,7 @@ import { Clock, Eye } from 'lucide-react';
 import type { Ticket } from '@/lib/types';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { TicketStatusBadge } from './ticket-status-badge';
+import { StatusBadge } from '@/components/requests/status-badge';
 import { useEffect, useState } from 'react';
 
 type TicketsTableProps = {
@@ -44,7 +44,7 @@ export function TicketsTable({ tickets }: TicketsTableProps) {
             <TableCell className="font-medium">{ticket.id}</TableCell>
             <TableCell>{ticket.type}</TableCell>
             <TableCell>
-              <TicketStatusBadge status={ticket.status} />
+              <StatusBadge status={ticket.status} />
             </TableCell>
             <TableCell>
               <div className="flex items-center gap-2">

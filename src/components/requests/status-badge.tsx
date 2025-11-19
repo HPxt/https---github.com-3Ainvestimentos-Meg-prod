@@ -1,10 +1,10 @@
 import { Badge } from '@/components/ui/badge';
-import type { WorkflowRequestStatus } from '@/lib/types';
+import type { WorkflowRequestStatus, TicketStatus } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { CheckCircle, Clock, FileWarning, Info, XCircle, CircleAlert, Check } from 'lucide-react';
 
 const statusConfig: Record<
-  WorkflowRequestStatus,
+  WorkflowRequestStatus | TicketStatus,
   {
     label: string;
     icon: React.ComponentType<{ className?: string }>;
@@ -46,9 +46,19 @@ const statusConfig: Record<
     icon: Check,
     className: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-400 border-yellow-300/80 dark:border-yellow-700/80',
   },
+  Finalizado: {
+    label: 'Finalizado',
+    icon: CheckCircle,
+    className: 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-400 border-green-300/80 dark:border-green-700/80',
+  },
+  'Em Análise': {
+    label: 'Em Análise',
+    icon: Info,
+    className: 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-400 border-blue-300/80 dark:border-blue-700/80',
+  }
 };
 
-export function StatusBadge({ status }: { status: WorkflowRequestStatus }) {
+export function StatusBadge({ status }: { status: WorkflowRequestStatus | TicketStatus }) {
   const config = statusConfig[status];
   if (!config) {
     return <Badge>{status}</Badge>;
