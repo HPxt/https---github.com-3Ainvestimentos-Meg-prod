@@ -39,7 +39,7 @@ const statusConfig: Record<
   'Solicitação Aberta': {
     label: 'Solicitação Aberta',
     icon: CircleAlert,
-    className: 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-400 border-red-300/80 dark:border-red-700/80',
+    className: 'bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-400 border-amber-300/80 dark:border-amber-700/80',
   },
   'Em aprovação': {
     label: 'Em aprovação',
