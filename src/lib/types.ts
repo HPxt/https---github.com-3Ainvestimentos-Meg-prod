@@ -33,7 +33,7 @@ export type WorkflowDefinition = {
   approvalSteps: ApprovalStep[];
 };
 
-export type WorkflowRequestStatus = 'Pendente' | 'Em Progresso' | 'Aprovado' | 'Rejeitado' | 'Necessita Informação';
+export type WorkflowRequestStatus = 'Pendente' | 'Em Progresso' | 'Aprovado' | 'Rejeitado' | 'Necessita Informação' | 'Solicitação Aberta' | 'Em aprovação';
 
 export type WorkflowRequest = {
   id: string;
@@ -45,6 +45,8 @@ export type WorkflowRequest = {
   currentStep: number;
   formData: Record<string, any>;
   history: AuditLogEntry[];
+  responsible?: User;
+  owner: User;
 };
 
 export type AuditLogEntry = {

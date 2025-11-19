@@ -1,7 +1,7 @@
 import { Badge } from '@/components/ui/badge';
 import type { WorkflowRequestStatus } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { CheckCircle, Clock, FileWarning, Info, XCircle } from 'lucide-react';
+import { CheckCircle, Clock, FileWarning, Info, XCircle, CircleAlert, Check } from 'lucide-react';
 
 const statusConfig: Record<
   WorkflowRequestStatus,
@@ -34,6 +34,16 @@ const statusConfig: Record<
   'Necessita Informação': {
     label: 'Mais Informações',
     icon: FileWarning,
+    className: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-400 border-yellow-300/80 dark:border-yellow-700/80',
+  },
+  'Solicitação Aberta': {
+    label: 'Solicitação Aberta',
+    icon: CircleAlert,
+    className: 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-400 border-red-300/80 dark:border-red-700/80',
+  },
+  'Em aprovação': {
+    label: 'Em aprovação',
+    icon: Check,
     className: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-400 border-yellow-300/80 dark:border-yellow-700/80',
   },
 };
