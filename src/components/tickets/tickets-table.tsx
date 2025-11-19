@@ -14,12 +14,19 @@ import type { Ticket } from '@/lib/types';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { TicketStatusBadge } from './ticket-status-badge';
+import { useEffect, useState } from 'react';
 
 type TicketsTableProps = {
   tickets: Ticket[];
 };
 
 export function TicketsTable({ tickets }: TicketsTableProps) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <Table>
       <TableHeader>
@@ -43,9 +50,9 @@ export function TicketsTable({ tickets }: TicketsTableProps) {
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4 text-muted-foreground" />
                 <span>
-                  {format(new Date(ticket.completionDate), 'dd/MM/yyyy', {
+                  {isClient ? format(new Date(ticket.completionDate), 'dd/MM/yyyy', {
                     locale: ptBR,
-                  })}
+                  }) : ''}
                 </span>
               </div>
             </TableCell>
