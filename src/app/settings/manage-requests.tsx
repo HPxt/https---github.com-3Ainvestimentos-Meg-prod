@@ -14,7 +14,7 @@ export function ManageRequests() {
   return (
     <div className="space-y-4 mt-4">
       <div className="space-y-1">
-        <h2 className="text-2xl font-headline font-bold tracking-tight">Gerenciar Solicitações</h2>
+        <h2 className="text-2xl font-headline font-bold tracking-tight">Histórico Geral de Solicitações</h2>
         <p className="text-muted-foreground">Revise, aprove ou rejeite solicitações de workflow enviadas por sua equipe.</p>
       </div>
       <Tabs defaultValue="pending">
