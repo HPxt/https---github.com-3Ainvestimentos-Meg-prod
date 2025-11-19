@@ -2,6 +2,7 @@
 
 import {
   BarChart,
+  Briefcase,
   Building,
   CreditCard,
   FileText,
@@ -62,6 +63,14 @@ const departments = [
     ],
   },
   {
+    name: 'Jurídico',
+    icon: Briefcase,
+    processes: [
+      { name: 'Análise de Contrato', icon: FileText },
+      { name: 'Consulta Jurídica', icon: FileText },
+    ],
+  },
+  {
     name: 'Marketing',
     icon: Gift,
     processes: [
@@ -99,7 +108,7 @@ export default function DashboardPage() {
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-6">
+          <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-7">
             {departments.map((dept) => (
               <Dialog key={dept.name} onOpenChange={(isOpen) => !isOpen && setSelectedDepartment(null)}>
                 <DialogTrigger asChild>
