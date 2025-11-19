@@ -22,9 +22,10 @@ import { AppShell } from '@/components/app-shell';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RequestsTable } from '@/components/requests/requests-table';
-import { mockRequests } from '@/lib/data';
+import { mockRequests, mockTickets } from '@/lib/data';
 import { WorkflowRequest } from '@/lib/types';
 import { useState } from 'react';
+import { TicketsTable } from '@/components/tickets/tickets-table';
 
 const departments = [
   {
@@ -118,7 +119,7 @@ export default function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent className="space-y-6">
-             <RequestsTable requests={pendingRequests} />
+             <TicketsTable tickets={mockTickets} />
           </CardContent>
         </Card>
       </div>

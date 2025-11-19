@@ -54,3 +54,12 @@ export type AuditLogEntry = {
   action: string;
   comment?: string;
 };
+
+export type TicketStatus = 'Finalizado' | 'Em Análise' | 'Solicitação Aberta';
+
+export type Ticket = {
+  id: string;
+  type: string;
+  status: TicketStatus;
+  completionDate: string;
+};

@@ -1,4 +1,4 @@
-import type { User, WorkflowDefinition, WorkflowRequest } from './types';
+import type { User, WorkflowDefinition, WorkflowRequest, Ticket } from './types';
 
 export const mockUsers: Record<string, User> = {
   'user-1': {
@@ -139,5 +139,32 @@ export const mockRequests: WorkflowRequest[] = [
       { id: 'h-4-1', timestamp: '2024-07-26T16:00:00Z', user: mockUsers['user-3'], action: 'Enviado' },
       { id: 'h-4-2', timestamp: '2024-07-27T10:00:00Z', user: mockUsers['user-2'], action: 'Rejeitado', comment: 'Justificativa insuficiente. Forneça mais detalhes sobre como isso afeta seu trabalho.' },
     ],
+  },
+];
+
+export const mockTickets: Ticket[] = [
+  {
+    id: '0123',
+    type: 'Sugestões 3A RIVA Connect',
+    status: 'Finalizado',
+    completionDate: '2025-09-19',
+  },
+  {
+    id: '0122',
+    type: 'Problemas de Rede',
+    status: 'Finalizado',
+    completionDate: '2025-09-22',
+  },
+  {
+    id: '8111',
+    type: 'Transferência de Cliente - Caso Único',
+    status: 'Em Análise',
+    completionDate: '2025-09-12',
+  },
+  {
+    id: '0055',
+    type: 'Solicitação de Suprimentos',
+    status: 'Solicitação Aberta',
+    completionDate: '2025-09-02',
   },
 ];
