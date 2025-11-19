@@ -18,8 +18,8 @@ export default function SettingsPage() {
         <Tabs defaultValue="workflows">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="workflows">Gerenciamento de Workflows</TabsTrigger>
-            <TabsTrigger value="users">Gerenciar Usuários</TabsTrigger>
             <TabsTrigger value="requests">Gerenciar Solicitações</TabsTrigger>
+            <TabsTrigger value="users">Gerenciar Usuários</TabsTrigger>
           </TabsList>
           <TabsContent value="workflows">
             <WorkflowDefinitions />

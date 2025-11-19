@@ -17,10 +17,10 @@ export function ManageRequests() {
         <h2 className="text-2xl font-headline font-bold tracking-tight">Histórico Geral de Solicitações</h2>
         <p className="text-muted-foreground">Revise, aprove ou rejeite solicitações de workflow enviadas por sua equipe.</p>
       </div>
-      <Tabs defaultValue="pending">
+      <Tabs defaultValue="all">
         <TabsList>
-          <TabsTrigger value="pending">Ação Pendente</TabsTrigger>
           <TabsTrigger value="all">Todas as Solicitações</TabsTrigger>
+          <TabsTrigger value="pending">Ação Pendente</TabsTrigger>
           <TabsTrigger value="resolved">Resolvidas</TabsTrigger>
         </TabsList>
         <Card>
