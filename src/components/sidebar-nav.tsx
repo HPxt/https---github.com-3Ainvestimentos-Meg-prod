@@ -49,7 +49,7 @@ export function SidebarNav() {
         <SidebarMenu>
           {menuItems.main.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label} className="justify-center">
+              <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label} className="group-data-[collapsible=icon]:p-0 justify-center">
                 <Link href={item.href}>
                   <item.icon />
                 </Link>
@@ -60,7 +60,7 @@ export function SidebarNav() {
           {user.role === 'Administrator' && (
              menuItems.admin.map((item) => (
               <SidebarMenuItem key={item.href}>
-                <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label} className="justify-center">
+                <SidebarMenuButton asChild isActive={isActive(item.href)} tooltip={item.label} className="group-data-[collapsible=icon]:p-0 justify-center">
                   <Link href={item.href}>
                     <item.icon />
                   </Link>
@@ -74,7 +74,7 @@ export function SidebarNav() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton onClick={handleLogout} tooltip="Sair" className="justify-center">
+            <SidebarMenuButton onClick={handleLogout} tooltip="Sair" className="group-data-[collapsible=icon]:p-0 justify-center">
                 <LogOut />
             </SidebarMenuButton>
           </SidebarMenuItem>
