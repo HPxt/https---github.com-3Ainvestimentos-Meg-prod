@@ -4,26 +4,25 @@ import {
   BarChart,
   Building,
   CreditCard,
+  FileText,
   Gift,
+  Layers,
   Monitor,
   Smartphone,
   Users,
-  X,
 } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
 
 import { AppShell } from '@/components/app-shell';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { RequestsTable } from '@/components/requests/requests-table';
 import { mockRequests, mockTickets } from '@/lib/data';
-import { WorkflowRequest } from '@/lib/types';
 import { useState } from 'react';
 import { TicketsTable } from '@/components/tickets/tickets-table';
 
@@ -31,26 +30,52 @@ const departments = [
   {
     name: 'Business Intelligence',
     icon: BarChart,
+    processes: [
+      { name: 'Espelhamento - Caso Único', icon: FileText },
+      { name: 'Espelhamento - Em lote', icon: Layers },
+      { name: 'Transferência de Cliente - Caso Único', icon: FileText },
+      { name: 'Transferência de Cliente - Em lote', icon: Layers },
+    ],
   },
   {
     name: 'Facilities e Suprimentos',
     icon: Smartphone,
+    processes: [
+        { name: 'Solicitação de Material de Escritório', icon: FileText },
+        { name: 'Manutenção de Equipamento', icon: FileText },
+    ],
   },
   {
     name: 'Financeiro',
     icon: CreditCard,
+    processes: [
+        { name: 'Reembolso de Despesas', icon: FileText },
+        { name: 'Adiantamento de Viagem', icon: FileText },
+    ],
   },
   {
     name: 'Gente e Comunicação',
     icon: Users,
+    processes: [
+        { name: 'Solicitação de Férias', icon: FileText },
+        { name: 'Alteração de Benefícios', icon: FileText },
+    ],
   },
   {
     name: 'Marketing',
     icon: Gift,
+    processes: [
+        { name: 'Solicitação de Material Promocional', icon: FileText },
+        { name: 'Aprovação de Campanha', icon: FileText },
+    ],
   },
   {
     name: 'TI',
     icon: Monitor,
+    processes: [
+        { name: 'Solicitação de Acesso', icon: FileText },
+        { name: 'Suporte Técnico', icon: FileText },
+    ],
   },
 ];
 
@@ -61,12 +86,6 @@ export default function DashboardPage() {
     (req) => req.status === 'Pendente' || req.status === 'Em Progresso'
   );
   
-  const getRequestsForDepartment = (department: string): WorkflowRequest[] => {
-    // This is a mock function. In a real application, you would filter
-    // requests based on the department.
-    return pendingRequests.slice(0, Math.floor(Math.random() * pendingRequests.length) + 1);
-  }
-
   return (
     <AppShell>
       <div className="flex-1 space-y-8">
@@ -94,12 +113,20 @@ export default function DashboardPage() {
                         </CardContent>
                     </Card>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[625px]">
+                <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
-                    <DialogTitle>Chamados - {selectedDepartment}</DialogTitle>
+                    <DialogTitle>{selectedDepartment}</DialogTitle>
+                    <DialogDescription>
+                        Selecione um dos processos abaixo para iniciar uma nova solicitação.
+                    </DialogDescription>
                   </DialogHeader>
-                  <div>
-                    <RequestsTable requests={getRequestsForDepartment(dept.name)} />
+                  <div className="grid gap-4 py-4">
+                    {dept.processes.map((process) => (
+                        <div key={process.name} className="flex items-center gap-4 p-4 border rounded-lg cursor-pointer hover:bg-muted/50 transition-colors">
+                            <process.icon className="h-6 w-6 text-muted-foreground" />
+                            <span className="font-medium">{process.name}</span>
+                        </div>
+                    ))}
                   </div>
                 </DialogContent>
               </Dialog>
