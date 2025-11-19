@@ -110,7 +110,7 @@ export default function DashboardPage() {
           <CardHeader>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div className="grid gap-2">
-                <CardTitle>Visão Geral das Solicitações</CardTitle>
+                <CardTitle>Minhas Solicitações</CardTitle>
                 <p className="text-sm text-muted-foreground">
                   Um resumo das suas submissões de workflow.
                 </p>
