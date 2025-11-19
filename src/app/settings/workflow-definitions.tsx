@@ -3,11 +3,7 @@
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from '@/components/ui/card';
-import { mockWorkflowDefinitions } from '@/lib/data';
 import {
   Table,
   TableBody,
@@ -17,14 +13,9 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
-import { MoreHorizontal, PlusCircle, List, FilePenLine, Trash2, BarChart, Smartphone, CreditCard, Users, FileText, Gift, Monitor, Briefcase } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { List, FilePenLine, Trash2, BarChart, Smartphone, CreditCard, Users, Briefcase, Gift, Monitor, Megaphone, User, Users2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { PlusCircle } from 'lucide-react';
 
 const areas = [
     { name: 'Business Intelligence', icon: BarChart },
@@ -35,6 +26,23 @@ const areas = [
     { name: 'Marketing', icon: Gift },
     { name: 'TI', icon: Monitor },
 ];
+
+const workflows = [
+    {
+        name: 'Ações Marketing',
+        area: 'Marketing',
+        owner: 'Barbara Fiche Girao',
+        access: 'Todos',
+        icon: Megaphone,
+    },
+    {
+        name: 'Alteração Cadastral',
+        area: 'Gente e Comunicação',
+        owner: 'Fernanda Maria Pinto Adami',
+        access: 'Todos',
+        icon: FilePenLine,
+    },
+]
 
 
 export function WorkflowDefinitions() {
@@ -118,39 +126,54 @@ export function WorkflowDefinitions() {
                 <CardContent className="p-0">
                 <Table>
                     <TableHeader>
-                    <TableRow>
-                        <TableHead>Nome</TableHead>
-                        <TableHead>Campos</TableHead>
-                        <TableHead>Etapas de Aprovação</TableHead>
-                        <TableHead>
-                        <span className="sr-only">Ações</span>
-                        </TableHead>
-                    </TableRow>
+                        <TableRow>
+                            <TableHead className="w-16">Ícone</TableHead>
+                            <TableHead>Nome</TableHead>
+                            <TableHead>Área</TableHead>
+                            <TableHead>Proprietário</TableHead>
+                            <TableHead>Acesso</TableHead>
+                            <TableHead className="w-24 text-right">Ações</TableHead>
+                        </TableRow>
                     </TableHeader>
                     <TableBody>
-                    {mockWorkflowDefinitions.map((def) => (
-                        <TableRow key={def.id}>
-                        <TableCell className="font-medium">{def.name}</TableCell>
-                        <TableCell>{def.formFields.length}</TableCell>
-                        <TableCell>{def.approvalSteps.length}</TableCell>
-                        <TableCell>
-                            <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button aria-haspopup="true" size="icon" variant="ghost">
-                                <MoreHorizontal className="h-4 w-4" />
-                                <span className="sr-only">Alternar menu</span>
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                                <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                                <DropdownMenuItem>Editar</DropdownMenuItem>
-                                <DropdownMenuItem>Duplicar</DropdownMenuItem>
-                                <DropdownMenuItem className="text-destructive">Excluir</DropdownMenuItem>
-                            </DropdownMenuContent>
-                            </DropdownMenu>
-                        </TableCell>
-                        </TableRow>
-                    ))}
+                        {workflows.map((workflow) => (
+                            <TableRow key={workflow.name}>
+                                <TableCell>
+                                    <div className="flex items-center justify-center h-8 w-8 text-muted-foreground">
+                                        <workflow.icon className="h-5 w-5" />
+                                    </div>
+                                </TableCell>
+                                <TableCell className="font-medium">{workflow.name}</TableCell>
+                                <TableCell>
+                                    <Badge variant="outline" className="font-normal">
+                                        <Briefcase className="mr-1 h-3 w-3" />
+                                        {workflow.area}
+                                    </Badge>
+                                </TableCell>
+                                <TableCell>
+                                    <Badge variant="outline" className="font-normal">
+                                        <User className="mr-1 h-3 w-3" />
+                                        {workflow.owner}
+                                    </Badge>
+                                </TableCell>
+                                <TableCell>
+                                    <Badge variant="outline" className="font-normal">
+                                        <Users2 className="mr-1 h-3 w-3" />
+                                        {workflow.access}
+                                    </Badge>
+                                </TableCell>
+                                <TableCell className="text-right">
+                                    <div className="flex items-center justify-end gap-2">
+                                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                                            <FilePenLine className="h-4 w-4" />
+                                        </Button>
+                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive">
+                                            <Trash2 className="h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                </TableCell>
+                            </TableRow>
+                        ))}
                     </TableBody>
                 </Table>
                 </CardContent>
